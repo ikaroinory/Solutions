@@ -7,6 +7,7 @@
 using namespace std;
 
 struct Function {
+private:
     static int TIMES(int v) {
         if (v >> 7)
             return ((v << 1) & 0xff) ^ 0x1b;
@@ -225,7 +226,6 @@ class AES {
         InvByteSub(state);
         AddRoundKey(state, roundKey);
         InvMixColumn(state);
-        int a = 0;
     }
     void InvFinalRound(vector<vector<int>>& state, vector<vector<int>> roundKey) {
         InvShiftRow(state);
@@ -237,6 +237,7 @@ class AES {
 public:
     string msg;
     string key;
+
     AES(string msg, string key) : msg(msg), key(key) {
         msgMatrix = vector<vector<int>>(Nk);
         keyMatrix = vector<vector<int>>(Nk);
